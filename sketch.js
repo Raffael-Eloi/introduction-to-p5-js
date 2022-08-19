@@ -1,10 +1,23 @@
 function setup() {
-    createCanvas(800, 800);
+    createCanvas(400, 400);
 }
 
 function draw() {
-    if (mouseIsPressed) fill('yellow');
-    else fill('blue');
+    background("pink");
+    
+    rectMode(CENTER);
 
-    ellipse(mouseX, mouseY, 80, 80);
+    // specify an amount to displace
+    translate(width/2, height/2);
+
+    translate(p5.Vector.fromAngle(millis() / 300, 40));
+    
+    fill("blue");
+
+    // sets the width of the stroke used for lines
+    strokeWeight(5);
+    
+    
+    ellipse(50,50, 33, 33);
+
 }
