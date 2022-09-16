@@ -34,10 +34,24 @@ function draw() {
     var x = cos(radians(angulo)) * raio;
     var y = sin(radians(angulo)) * raio;
 
+    console.log('x', x);
+    // console.log('y', y);
+
     // desenha uma elipse na coord (x,y)
     // corrige (x,y) para (x+cx,y+cy)
     ellipse(x+cx, y+cy, 5);
   }
+
+//   for (var angulo = 0; angulo <= 360; angulo += inc) {
+//     // transforma o angulo de
+//     // coord polar para coord cartesiana
+//     var x = cos(radians(angulo)) * raio;
+//     var y = sin(radians(angulo)) * raio;
+
+//     // desenha uma elipse na coord (x,y)
+//     // corrige (x,y) para (x+cx,y+cy)
+//     ellipse(x+cx, y+cy, 5);
+//   }
 
   // desenha uma elipse na coord (cx,cy)
   ellipse(cx, cy, 5);
@@ -45,7 +59,7 @@ function draw() {
   // preenchimento preto para o texto
   fill(0);
   // texto da coord (cx,cy)
-  text('C\n(200,200)', cx, cy + 20);
+  text('Sol\n(200,200)', cx, cy + 20);
 
   // linha de (cx,cy) a (cx+raio, cy)
   line(cx, cy, cx + raio, cy);
