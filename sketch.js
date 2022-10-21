@@ -8,16 +8,14 @@ function Player() {
   this.topspeed = maxVelocity;
   this.dim = 20;
 
-  this.inverteX = function (){
+  this.inverteX = function () {
     this.velocity.x *= -1;
   }
-  this.inverteY = function (){
+  this.inverteY = function () {
     this.velocity.y *= -1;
   }
   
-  
-  
-  this.setAcceleration = function(direcao){
+  this.setAcceleration = function (direcao) {
     this.acceleration = direcao;
   }
   this.update = function () {
@@ -33,20 +31,16 @@ function Player() {
   };
 
   this.checkEdges = function () {
-    if (this.location.x > width){
+    if (this.location.x > width) {
       this.location.x = 0;
-      
-    }else if(this.location.x < 0) {
+    } else if (this.location.x < 0) {
       this.location.x = width;
-      
     }
     
-    if (this.location.y > height){
+    if (this.location.y > height) {
       this.location.y = 0;
-      
-    }else if(this.location.y < 0) {
+    } else if (this.location.y < 0) {
       this.location.y = width;
-      
     }
   }
 }
@@ -59,7 +53,7 @@ function Enemy() {
   this.dim = 20;
   this.alvo = null;
   this.range = false;
-  this.visionArea = width/3;
+  this.visionArea = width / 3;
 
   this.setAlvo = function (alvo) {
     this.alvo = alvo;
@@ -67,7 +61,7 @@ function Enemy() {
 
   this.update = function () {
     this.checkTarget();
-    if (this.range){
+    if (this.range) {
       var dir = p5.Vector.sub(this.alvo, this.location);
       dir.normalize();
       dir.mult(0.2);
@@ -76,14 +70,14 @@ function Enemy() {
       this.velocity.add(this.acceleration);
       this.velocity.limit(this.topspeed);
       this.location.add(this.velocity);
-    }else{
+    } else {
       this.location.add(this.velocity);
     }
   };
 
-  this.checkTarget = function(){
+  this.checkTarget = function() {
     var distancy = dist(this.alvo.x, this.alvo.y, this.location.x, this.location.y);
-    if(distancy < this.visionArea){
+    if (distancy < this.visionArea) {
       this.range = true;
       if(distancy < this.dim){
         noLoop();
@@ -106,7 +100,7 @@ function Enemy() {
     if (this.location.x > width){
       this.location.x = 0;
       
-    }else if(this.location.x < 0) {
+    } else if(this.location.x < 0) {
       this.location.x = width;
       
     }
@@ -150,18 +144,19 @@ function draw() {
 }
 
 function keyPressed() {
-  if (keyCode === LEFT_ARROW) {
+  if (keyCode === ArrowLeft) {
     Player.setAcceleration(createVector(-acceleration, 0));
     Player.inverteX();
-  } else if (keyCode === RIGHT_ARROW) {
+  }
+  else if (keyCode === ArrowRight) {
     Player.setAcceleration(createVector(acceleration, 0));
     Player.inverteX();
   }
-  else if (keyCode === UP_ARROW) {
+  else if (keyCode === ArrowUp) {
     Player.setAcceleration(createVector(0, -acceleration));
     Player.inverteY();
   }
-  else if (keyCode === DOWN_ARROW) {
+  else if (keyCode === ArrowDown) {
     Player.setAcceleration(createVector(0, acceleration));
     Player.inverteY();
   }
