@@ -144,20 +144,19 @@ function draw() {
 }
 
 function keyPressed() {
-  if (keyCode === ArrowLeft) {
-    Player.setAcceleration(createVector(-acceleration, 0));
-    Player.inverteX();
+  if (keyCode === LEFT_ARROW) {
+    jogador.setAcc(createVector(-aceleracao, 0));
+    jogador.inverteX();
+  } else if (keyCode === RIGHT_ARROW) {
+    jogador.setAcc(createVector(aceleracao, 0));
+    jogador.inverteX();
   }
-  else if (keyCode === ArrowRight) {
-    Player.setAcceleration(createVector(acceleration, 0));
-    Player.inverteX();
+  else if (keyCode === UP_ARROW) {
+    jogador.setAcc(createVector(0, -aceleracao));
+    jogador.inverteY();
   }
-  else if (keyCode === ArrowUp) {
-    Player.setAcceleration(createVector(0, -acceleration));
-    Player.inverteY();
-  }
-  else if (keyCode === ArrowDown) {
-    Player.setAcceleration(createVector(0, acceleration));
-    Player.inverteY();
+  else if (keyCode === DOWN_ARROW) {
+    jogador.setAcc(createVector(0, aceleracao));
+    jogador.inverteY();
   }
 }
