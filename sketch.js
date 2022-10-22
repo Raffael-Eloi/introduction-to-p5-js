@@ -79,7 +79,7 @@ function Enemy() {
 
   this.checkTarget = function() {
     var distancy = dist(this.target.x, this.target.y, this.location.x, this.location.y);
-    if (distancy < this.visionArea/2) {
+    if (distancy < this.visionArea) {
       this.range = true;
       if(distancy < this.dim){
         alert("Game over");
@@ -95,8 +95,6 @@ function Enemy() {
     fill(255, 0, 0);
     ellipse(this.location.x, this.location.y, this.dim, this.dim);
     noFill();
-    stroke(255, 0, 0, 50);
-    ellipse(this.location.x, this.location.y, this.visionArea, this.visionArea);
   };
 
   this.checkEdges = function () {
